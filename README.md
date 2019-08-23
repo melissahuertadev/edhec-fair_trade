@@ -1,0 +1,1 @@
+# edhec-fair_trade
