@@ -11,7 +11,6 @@ via Reacts Context API to React's component tree */
 import Firebase, { FirebaseContext } from './components/Firebase';
 
 
-
 ReactDOM.render(
     <FirebaseContext.Provider value ={new Firebase()}>
         <App />
