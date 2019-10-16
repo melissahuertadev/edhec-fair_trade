@@ -1,4 +1,5 @@
 import app from 'firebase/app';
+import 'firebase/auth'
 
 /* real values are set on .env file */
 const config = {
@@ -15,6 +16,9 @@ const config = {
 class Firebase {
     constructor() {
         app.initializeApp(config);
+
+        /* implementing the authentication API */
+        this.auth = app.auth();
     }
 }
 
