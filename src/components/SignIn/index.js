@@ -6,7 +6,7 @@ const SignIn = () => (
     <FirebaseContext.Consumer>
         {firebase => {
             return  <div>
-                        <h1> SIGN IN</h1>
+                        <h1> Sign In</h1>
                     </div>
         }}
     </FirebaseContext.Consumer>

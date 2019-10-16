@@ -17,9 +17,24 @@ class Firebase {
     constructor() {
         app.initializeApp(config);
 
-        /* implementing the authentication API */
+        // *** implementing the authentication API
         this.auth = app.auth();
     }
+
+    // *** Auth API
+    //sign up function takes email and password
+    doCreateUserWithEmailAndPassword = (email, password) =>
+        this.auth.createUserWithEmailAndPassword(email, password);
+
+    //sign in function takes email and password
+    doSignInWithEmailAndPassword = (email, password) =>
+        this.auth.signInWithEmailAndPassword(email, password);
+    //sign out
+    doSignOut = () => this.auth.signOut;
+
+    doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+    doPasswordUpdate = password =>
+        this.auth.currentUser.updatePassword(password);
 }
 
 export default Firebase;
