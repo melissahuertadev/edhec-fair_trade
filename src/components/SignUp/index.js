@@ -1,15 +1,130 @@
-import React from 'react';
+//Page, form and link(used on the sign in page)
+
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { FirebaseContext } from '../Firebase';
+import * as ROUTES from '../../constants/routes';
 
-const SignUp = () => (
-    <FirebaseContext.Consumer>
-        {firebase => {
-            return  <div>
-                        <h1>SignUp</h1>
-                    </div>
-        }}
-    </FirebaseContext.Consumer>
+const SignUpPage = () => (
+    <div> 
+        <h1>SignUp</h1>
+        <FirebaseContext.Consumer>
+            {firebase => <SignUpForm firebase={firebase} />}
+        </FirebaseContext.Consumer>
+    </div>
 );
 
-export default SignUp;
+//form for capturing the user information, the initial
+//state will be use to reset the state after a sign up too.
+
+const INITIAL_STATE = {
+    username: '',
+    email: '',
+    passwordOne: '',
+    passwordTwo: '',
+    error: null,
+};
+
+class SignUpForm extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { ...INITIAL_STATE };
+    }
+
+    /*this class method will pass the form data to the Firebase
+      authentication API via interface in the Firebase class.
+      
+      If the request resolves sucessfully, component'state will be set
+      to its initial state - If the request is rejected, it runs to the
+      catch block and set the error object in the local state.
+      
+      The preventDefault() method prevents a reload of the browser
+    */
+    onSubmit = event => {
+        const { username, email, passwordOne } = this.state;
+
+        this.props.firebase
+            .doCreateUserWithEmailAndPassword(email, passwordOne)
+            .then(authUser => {
+                this.setState({ ...INITIAL_STATE });
+            })
+            .catch(error => {
+                this.setState({ error });
+            });
+
+        event.preventDefault();
+    };
+
+    onChange = event => {
+        this.setState({ [event.target.name]: event.target.value } );
+    };
+    
+    //each input field gets a value from the local state and updates
+    //the value in the local state with the onChange handler
+    render() {
+        const {
+            username,
+            email,
+            passwordOne,
+            passwordTwo,
+            error,
+        } = this.state;
+
+        const isInvalid = 
+            passwordOne !== passwordTwo ||
+            passwordOne === '' ||
+            email === '' ||
+            username === '';
+
+        return (
+            /* controlled components */
+            <form onSubmit={this.onSubmit}>
+                <input
+                    name="username"
+                    value={username}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Type your full Name"
+                />
+                <input
+                    name="email"
+                    value={email}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Type your email"
+                />
+                <input
+                    name="passwordOne"
+                    value={passwordOne}
+                    onChange={this.onChange}
+                    type="password"
+                    placeholder="Set your password"
+                />
+                <input
+                    name="passwordTwo"
+                    value={passwordTwo}
+                    onChange={this.onChange}
+                    type="password"
+                    placeholder="Confirm your password"
+                />
+                <button disabled={isInvalid} type="submit">
+                    Sign Up
+                </button>
+
+                {error && <p>{error.message}</p>}
+            </form>
+        );
+    }
+}
+
+const SignUpLink = () => (
+    <p>
+        Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    </p>
+);
+
+export default SignUpPage;
+
+export { SignUpForm, SignUpLink };
