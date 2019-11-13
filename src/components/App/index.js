@@ -23,7 +23,7 @@ const App = () => (
             return  <Router>
                         <Navigation/>
                         <hr />
-                        <div style={{ padding: "60px 60px", textAlign: "center", color: "blue"}}>
+                        <div style={{ padding: "60px 60px", textAlign: "center", color: "grey"}}> 
                             <header>EDHEC FAIRTRADE PROJECT</header>
                             <Route exact path={ROUTES.ABOUT_US} component={AboutUsPage} />
                             <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
