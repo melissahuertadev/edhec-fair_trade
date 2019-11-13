@@ -6,7 +6,7 @@ import {
 
 
 import Navigation from '../Navigation';
-import LandingPage from '../Landing';
+import AboutUsPage from '../AboutUs';
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
@@ -25,7 +25,7 @@ const App = () => (
                         <hr />
                         <div style={{ padding: "60px 60px", textAlign: "center", color: "blue"}}>
                             <header>EDHEC FAIRTRADE PROJECT</header>
-                            <Route exact path={ROUTES.LANDING} component={LandingPage} />
+                            <Route exact path={ROUTES.ABOUT_US} component={AboutUsPage} />
                             <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
                             <Route path={ROUTES.SIGN_IN} component={SignInPage} />
                             <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
