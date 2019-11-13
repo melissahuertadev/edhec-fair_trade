@@ -45,7 +45,8 @@ class SignInFormBase extends Component {
             .catch(error => {
                 this.setState({ error });
             });
-            event.preventDefault();
+
+         event.preventDefault();
     };
 
     onChange = event => {
@@ -76,23 +77,12 @@ class SignInFormBase extends Component {
                 <button disabled={isInvalid} type="submit">
                     Sign In
                 </button>
+
+                {error && <p>{error.message}</p>}
             </form>
         );
     }
 }
-
-/*
-const SignIn = () => (
-    <FirebaseContext.Consumer>
-        {firebase => {
-            return  <div>
-                        <h1> Sign In</h1>
-                    </div>
-        }}
-    </FirebaseContext.Consumer>
-);*/
-
-//export default SignIn;
 
 const SignInForm = compose(
     withRouter,
