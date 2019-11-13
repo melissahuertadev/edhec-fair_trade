@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 //Replacing FirebaseContext, because it doesnt need the firebase instance
 import { withFirebase } from '../Firebase';
@@ -126,7 +127,11 @@ const SignUpLink = () => (
     </p>
 );
 
-const SignUpForm = withRouter(withFirebase(SignUpFormBase));
+//compose: organize the high-order components
+const SignUpForm = compose(
+    withRouter,
+    withFirebase,
+)(SignUpFormBase);
 
 export default SignUpPage;
 
