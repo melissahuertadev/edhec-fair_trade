@@ -11,4 +11,13 @@ import React from 'react';
  the React component*/
 const FirebaseContext = React.createContext(null);
 
+/*Using a higher-order component instead of using a render prop component,
+ * then made it able in Firebase/index.js
+ */
+export const withFirebase = Component => props => (
+    <FirebaseContext.Consumer>
+        {firebase => <Component {...props} firebase={firebase} />}
+    </FirebaseContext.Consumer>
+);
+
 export default FirebaseContext;
