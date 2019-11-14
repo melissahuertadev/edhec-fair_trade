@@ -6,6 +6,7 @@ const AboutUs = () => (
         {firebase => {
             return  <div>
                         <h1>About Us</h1>
+                        <img src="https://picsum.photos/id/425/959/635"/>
                     </div>
         }}
     </FirebaseContext.Consumer>
