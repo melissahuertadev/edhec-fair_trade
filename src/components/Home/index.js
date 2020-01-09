@@ -12,7 +12,7 @@ const Home = () => (
     <FirebaseContext.Consumer>
         {firebase => {
             return <div>
-                <img src="https://cdn1.imggmi.com/uploads/2019/11/15/4e9d20a2a43f9e9912bcaac350c92730-full.jpg" />
+                <img src="https://imgur.com/jqxPUrM"/>
                 <h1>WHY FAIR TRADE?</h1>
                         <p>Fair trade is a global movement made up of a diverse network of producers, companies, shoppers, advocates, and organizations putting people and planet first.
 

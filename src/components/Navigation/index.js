@@ -35,6 +35,9 @@ const NavigationAuth = () => (
                     <Link class = "nav-link" to={ROUTES.PEEPS}>Peeps</Link>
                 </li>
                 <li>
+                    <Link class = "nav-link" to={ROUTES.VOLUNTEER}>Volunteer</Link>
+                </li>
+                <li>
                     <SignOutButton />
                 </li>
             </Nav>  
@@ -57,6 +60,9 @@ const NavigationNonAuth = () => (
                 </li>
                 <li>
                     <Link class = "nav-link" to={ROUTES.PEEPS}>Peeps</Link>
+                </li>
+                <li>
+                    <Link class = "nav-link" to={ROUTES.VOLUNTEER}>Volunteer</Link>
                 </li>
             </Nav>  
         </div>
