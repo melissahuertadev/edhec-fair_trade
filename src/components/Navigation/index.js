@@ -29,9 +29,6 @@ const NavigationAuth = () => (
                     <Link class = "nav-link" to ={ROUTES.ADMIN}>Admin</Link>
                 </li>
                 <li>
-                    <Link class = "nav-link" to={ROUTES.SIGN_IN}>Sign In</Link>
-                </li>
-                <li>
                     <Link class = "nav-link" to={ROUTES.PEEPS}>Peeps</Link>
                 </li>
                 <li>

@@ -27,6 +27,8 @@ class App extends Component {
         };
     }
 
+    //authenticagion with firebase, to prevent memory leaks, remove the listener
+    // if the component unmounts
     componentDidMount() {
         this.listener = this.props.firebase.auth.onAuthStateChanged(
             authUser => {
