@@ -33,9 +33,6 @@ const NavigationAuth = () => (
                     <Link class = "nav-link" to ={ROUTES.ACCOUNT}>Account</Link>
                 </li>
                 <li>
-                    <Link class = "nav-link" to ={ROUTES.ADMIN}>Admin</Link>
-                </li>
-                <li>
                     <Link class = "nav-link" to={ROUTES.PEEPS}>Peeps</Link>
                 </li>
                 <li>
@@ -46,6 +43,9 @@ const NavigationAuth = () => (
                 </li>
                 <li>
                     <Link class = "nav-link" to={ROUTES.COMMENT_BOX}>Comments</Link>
+                </li>
+                <li>
+                    <Link class = "nav-link" to={ROUTES.ADMIN}>Admin</Link>
                 </li>
                 <li>
                     <SignOutButton />
