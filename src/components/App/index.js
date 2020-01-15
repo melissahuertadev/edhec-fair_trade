@@ -13,6 +13,7 @@ import PeepsPage from '../Peeps';
 import VolunteerPage from '../Volunteer';
 import SupportPage from '../Support';
 import CommentBoxPage from '../CommentBox';
+import { AuthUserContext } from '../Session';
 
 import * as ROUTES from '../../constants/routes';
 import { withFirebase } from '../Firebase';
@@ -44,23 +45,25 @@ class App extends Component {
 
     render() {
         return (
-            <Router>
-                <Navigation authUser={this.state.authUser}/>
-                <hr />
-                <div style={{ padding: "60px 60px", textAlign: "center", color: "grey"}}>
-                    <Route exact path={ROUTES.ABOUT_US} component={AboutUsPage} />
-                    <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-                    <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                    <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-                    <Route path={ROUTES.HOME} component={HomePage} />
-                    <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-                    <Route path={ROUTES.ADMIN} component={AdminPage} />
-                    <Route path={ROUTES.PEEPS} component={PeepsPage} />
-                    <Route path={ROUTES.VOLUNTEER} component={VolunteerPage} />
-                    <Route path={ROUTES.SUPPORT} component={SupportPage} />
-                    <Route path={ROUTES.COMMENT_BOX} component={CommentBoxPage} />
-                </div>
-            </Router>
+            <AuthUserContext.Provider value={this.state.authUser}>
+                <Router>
+                    <Navigation />
+                    <hr />
+                    <div style={{ padding: "60px 60px", textAlign: "center", color: "grey"}}>
+                        <Route exact path={ROUTES.ABOUT_US} component={AboutUsPage} />
+                        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+                        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+                        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+                        <Route path={ROUTES.HOME} component={HomePage} />
+                        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+                        <Route path={ROUTES.ADMIN} component={AdminPage} />
+                        <Route path={ROUTES.PEEPS} component={PeepsPage} />
+                        <Route path={ROUTES.VOLUNTEER} component={VolunteerPage} />
+                        <Route path={ROUTES.SUPPORT} component={SupportPage} />
+                        <Route path={ROUTES.COMMENT_BOX} component={CommentBoxPage} />
+                    </div>
+                </Router>
+            </AuthUserContext.Provider>
         );
     }
 }

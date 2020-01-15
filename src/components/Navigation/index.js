@@ -3,13 +3,20 @@ import { Link } from 'react-router-dom';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import { AuthUserContext } from '../Session';
 
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 
 //navigation costumize according to log status
-const Navigation = ({ authUser }) => (
-    <div>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
+const Navigation = () => (
+    <div>
+        <AuthUserContext.Consumer>
+            {authUser =>
+             authUser ? <NavigationAuth /> : <NavigationNonAuth />
+            }
+        </AuthUserContext.Consumer>    
+    </div>
 );
 
 const NavigationAuth = () => (
