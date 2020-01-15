@@ -48,12 +48,21 @@ class SignUpFormBase extends Component {
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
+                //user in firebase db
+                return this.props.firebase
+                 .user(authUser.user.uid)
+                 .set({
+                    username, email,
+                  });
+            })
+            .then(() => {
                 this.setState({ ...INITIAL_STATE });
-                //redirecting after succesful signup
+                 //redirecting after succesful signup
                 this.props.history.push(ROUTES.HOME);
             })
             .catch(error => {
                 this.setState({ error });
+               
             });
 
         event.preventDefault();
