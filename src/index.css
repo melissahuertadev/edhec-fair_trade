@@ -7,7 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: bolder;
   background-size: 100%;
-  background-image: url("https://cdn.pixabay.com/photo/2019/10/15/15/32/trading-4552077_1280.jpg");
+  background-color: white;
+  //background-image: url("https://cdn.pixabay.com/photo/2019/12/11/04/47/virgos-4687432_1280.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
