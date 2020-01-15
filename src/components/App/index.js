@@ -12,6 +12,7 @@ import AdminPage from '../Admin';
 import PeepsPage from '../Peeps';
 import VolunteerPage from '../Volunteer';
 import SupportPage from '../Support';
+import CommentBoxPage from '../CommentBox';
 
 import * as ROUTES from '../../constants/routes';
 import { withFirebase } from '../Firebase';
@@ -55,6 +56,7 @@ class App extends Component {
                     <Route path={ROUTES.PEEPS} component={PeepsPage} />
                     <Route path={ROUTES.VOLUNTEER} component={VolunteerPage} />
                     <Route path={ROUTES.SUPPORT} component={SupportPage} />
+                    <Route path={ROUTES.COMMENT_BOX} component={CommentBoxPage} />
                 </div>
             </Router>
         );
