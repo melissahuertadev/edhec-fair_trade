@@ -38,6 +38,9 @@ const NavigationAuth = () => (
                     <Link class = "nav-link" to={ROUTES.SUPPORT}>Support</Link>
                 </li>
                 <li>
+                    <Link class = "nav-link" to={ROUTES.COMMENT_BOX}>Comments</Link>
+                </li>
+                <li>
                     <SignOutButton />
                 </li>
             </Nav>  

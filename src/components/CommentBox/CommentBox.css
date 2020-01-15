@@ -1,0 +1,37 @@
+.CommentBox {
+    padding-top: 1rem;
+    margin: 2rem auto;
+}
+
+.CommentBox-logo {
+    height: 80px;
+}
+
+.Spin {
+    animation: CommentBox-logo-spin infinite 2s linear;
+}
+
+.CommentBox-header {
+    text-align: center;
+    background-color: var(--secondary);
+    padding: 20px;
+    color: white;
+    border-radius: 0.3rem;
+}
+
+.CommentBox-title {
+    font-size: 1.5em;
+}
+
+.CommentBox-intro {
+    font-size: large;
+}
+
+@keyframes CommentBox-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
