@@ -5,12 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: bolder;
   background-size: 100%;
-  background-color: rgb(106, 181, 243);
+  background-image: url("https://cdn.pixabay.com/photo/2019/10/15/15/32/trading-4552077_1280.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
