@@ -1,37 +1,72 @@
-.CommentBox {
-    padding-top: 1rem;
-    margin: 2rem auto;
+$dark-grey: #404040;
+$nc-blue: #00BDFC;
+$nc-bl-dark: #0093C4;
+$red: #FC3F00;
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  padding: 2rem;
 }
 
-.CommentBox-logo {
-    height: 80px;
+.comment-box {
+  max-width: 37.5rem;
+  color: #fff;
+  background-color: #909090;
+  border-radius: 0.875rem;
+  padding: 0.2rem 1rem 2rem;
 }
-
-.Spin {
-    animation: CommentBox-logo-spin infinite 2s linear;
+.comment-form {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  margin-bottom: 2rem;
+  padding: 1rem;  
 }
-
-.CommentBox-header {
-    text-align: center;
-    background-color: var(--secondary);
-    padding: 20px;
-    color: white;
-    border-radius: 0.3rem;
-}
-
-.CommentBox-title {
-    font-size: 1.5em;
-}
-
-.CommentBox-intro {
-    font-size: large;
-}
-
-@keyframes CommentBox-logo-spin {
-    from {
-        transform: rotate(0deg);
+.comment-form-fields {
+  margin-bottom: 0.25rem;
+  input, textarea {
+    border: none;
+    border-bottom: 1px solid $dark-grey;
+    font-size: 0.85rem;
+    padding: 0.25rem 0;
+    width: 99%;
+    
+    &:focus {
+      border-bottom-color: $nc-blue;
+      outline: none;
     }
-    to {
-        transform: rotate(360deg);
-    }
+  }
+  textarea {
+    font-style: italic;
+  }
+}
+.comment-form-actions {
+  
+}
+.comment-count {
+  color: $dark-grey;
+}
+#comment-reveal {
+  float: right;
+  background-color: $nc-blue;
+  color: #fff;
+}
+.comment {
+  border-top: 0.125rem solid $dark-grey;
+}
+.comment-body {
+  font-style: italic;
+  margin-left: 1rem;
+}
+.comment-footer {
+  margin-bottom: 1rem;
+}
+.comment-footer-delete {
+  padding: 0.2rem 0;
+  color: $dark-grey;
+  text-decoration: none;
+  
+  &:hover {
+    color: $nc-blue;
+    font-weight: bold;
+  }
 }
