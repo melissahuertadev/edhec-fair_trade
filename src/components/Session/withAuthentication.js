@@ -33,10 +33,8 @@ const withAuthentication = Component => {
                     <Component {...this.props} />;
                 </AuthUserContext.Provider>
             );
-            
         }
     }
-
     return withFirebase(WithAuthentication);
 };
 

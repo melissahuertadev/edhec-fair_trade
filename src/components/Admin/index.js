@@ -1,13 +1,17 @@
 import React from 'react';
 
-import { FirebaseContext } from '../Firebase';
+import * as ROLES from '../../constants/roles';
+import { withAuthorization } from '../Session';
 
 const Admin = () => (
-    <FirebaseContext.Consumer>
+    /*<FirebaseContext.Consumer>
         {firebase => {
             return (
+                */
             <div>
                 <h1>Admin</h1>
+                <p>Restricted area! Only users with the admin rola are authorized</p>
+                
                 <div class="ui vertical menu">
                 <div class="item">
                     <div class="header">Products</div>
@@ -68,10 +72,14 @@ const Admin = () => (
                 </div>
                 </div>
             </div>
-        )
+       /* )
         }
     }
-    </FirebaseContext.Consumer>
+    </FirebaseContext.Consumer>*/
 );
+/*
+const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 
+export default withAuthorization(condition)(Admin);
+*/
 export default Admin;

@@ -1,10 +1,10 @@
-import React from 'react';
-import { FirebaseContext } from '../Firebase';
+/*import React from 'react';
+import { FirebaseContext } from '../Firebase'; */
 
 import AuthUserContext from './context';
-//mport withAuthentication from './withAuthentication';
+import withAuthentication from './withAuthentication';
 import withAuthorization from './withAuthorization';
-
+/*
 const Session = () => (
     <FirebaseContext.Consumer>
         {firebase => {
@@ -17,5 +17,5 @@ const Session = () => (
 );
 
 export default Session;
-
-export { AuthUserContext, withAuthorization};
+*/
+export { AuthUserContext, withAuthentication, withAuthorization};

@@ -14,10 +14,8 @@ import PeepsPage from '../Peeps';
 import VolunteerPage from '../Volunteer';
 import SupportPage from '../Support';
 import CommentBoxPage from '../CommentBox';
-import { AuthUserContext } from '../Session';
 
 import * as ROUTES from '../../constants/routes';
-import { withFirebase } from '../Firebase';
 import { withAuthentication } from '../Session';
 
 const App = () => (
