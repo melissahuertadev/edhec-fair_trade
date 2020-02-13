@@ -5,13 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: bolder;
-  background-size: 100%;
-  background-color: white;
-  //background-image: url("https://cdn.pixabay.com/photo/2019/12/11/04/47/virgos-4687432_1280.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 code {
