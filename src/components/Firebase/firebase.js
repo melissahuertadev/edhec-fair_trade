@@ -41,7 +41,7 @@ class Firebase {
 
     //merge auth and DB user API
     onAuthUserListener = (next, fallback) => 
-        this.auth.onAuthStateChanged(authUser => {
+        this.auth.onAuthStateChanged( authUser => {
             if (authUser) {
                 this.user(authUser.uid)
                     .once('value')
@@ -49,10 +49,11 @@ class Firebase {
                         const dbUser = snapshot.val();
 
                         //empty roles
+                        /*
                         if (!dbUser.roles) {
                             dbUser.roles = {};
                         }
-
+*/
                         authUser = {
                             uid: authUser.uid,
                             email: authUser.email,
