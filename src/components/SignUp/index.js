@@ -7,6 +7,7 @@ import { compose } from 'recompose';
 //Replacing FirebaseContext, because it doesnt need the firebase instance
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import * as ROLES from '../../constants/roles';
 
 const SignUpPage = () => (
     <div> 
@@ -23,9 +24,11 @@ const INITIAL_STATE = {
     email: '',
     passwordOne: '',
     passwordTwo: '',
+    isAdmin: false,
     error: null,
 };
 
+//UI
 class SignUpFormBase extends Component {
     constructor(props) {
         super(props);
@@ -43,17 +46,35 @@ class SignUpFormBase extends Component {
       The preventDefault() method prevents a reload of the browser
     */
     onSubmit = event => {
-        const { username, email, passwordOne } = this.state;
+        const { username, email, passwordOne, isAdmin } = this.state;
+        const roles = {};
+        
+        //check if the user is Admin 
+        if (isAdmin) {
+            roles[ROLES.ADMIN] = ROLES.ADMIN;
+        }
 
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
+            .then(authUser => {}
+                //creating the user in the firebase
+            )
             .then(authUser => {
+                //user in firebase db
+                return this.props.firebase
+                 .user(authUser.user.uid)
+                 .set({
+                    username, email,
+                  });
+            })
+            .then(() => {
                 this.setState({ ...INITIAL_STATE });
-                //redirecting after succesful signup
+                 //redirecting after succesful signup
                 this.props.history.push(ROUTES.HOME);
             })
             .catch(error => {
                 this.setState({ error });
+               
             });
 
         event.preventDefault();
@@ -63,6 +84,10 @@ class SignUpFormBase extends Component {
         this.setState({ [event.target.name]: event.target.value } );
     };
     
+    onChangeCheckBox = event => {
+        this.setState({ [event.target.name]: event.target.checked});
+    };
+
     //each input field gets a value from the local state and updates
     //the value in the local state with the onChange handler
     render() {
@@ -71,6 +96,7 @@ class SignUpFormBase extends Component {
             email,
             passwordOne,
             passwordTwo,
+            isAdmin,
             error,
         } = this.state;
 
@@ -111,6 +137,15 @@ class SignUpFormBase extends Component {
                     type="password"
                     placeholder="Confirm your password"
                 />
+                <label>
+                    Admin:
+                    <input
+                        name="isAdmin"
+                        type="checkbox"
+                        checked={isAdmin}
+                        onChange={this.onChangeCheckBox}
+                    />
+                </label>
                 <button disabled={isInvalid} type="submit">
                     Sign Up
                 </button>

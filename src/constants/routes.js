@@ -1,4 +1,4 @@
-export const ABOUT_US = '/';
+export const ABOUT_US = '/aboutus';
 export const SIGN_UP = '/signup';
 export const SIGN_IN = '/signin';
 export const HOME = '/home';
@@ -6,3 +6,6 @@ export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
 export const PEEPS = '/peeps';
+export const VOLUNTEER = '/volunteer';
+export const SUPPORT = '/support';
+export const COMMENT_BOX = '/commentbox';

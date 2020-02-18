@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+//import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Navigation from '../Navigation';
@@ -10,10 +11,35 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import PeepsPage from '../Peeps';
+import VolunteerPage from '../Volunteer';
+import SupportPage from '../Support';
+import CommentBoxPage from '../CommentBox';
 
 import * as ROUTES from '../../constants/routes';
-import { withFirebase } from '../Firebase';
+import { withAuthentication } from '../Session';
 
+const App = () => (
+    <Router>
+        <Navigation />
+        <hr />
+        <div style={{ padding: "60px 60px", textAlign: "center", color: "grey"}}>
+            <Route exact path={ROUTES.ABOUT_US} component={AboutUsPage} />
+            <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+            <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+            <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+            <Route path={ROUTES.HOME} component={HomePage} />
+            <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+            <Route path={ROUTES.ADMIN} component={AdminPage} />
+            <Route path={ROUTES.PEEPS} component={PeepsPage} />
+            <Route path={ROUTES.VOLUNTEER} component={VolunteerPage} />
+            <Route path={ROUTES.SUPPORT} component={SupportPage} />
+            <Route path={ROUTES.COMMENT_BOX} component={CommentBoxPage} />
+        </div>
+    </Router>
+);
+
+export default withAuthentication(App);
+/*
 //change const App to class App
 class App extends Component {
     constructor(props) {
@@ -24,6 +50,8 @@ class App extends Component {
         };
     }
 
+    //authenticagion with firebase, to prevent memory leaks, remove the listener
+    // if the component unmounts
     componentDidMount() {
         this.listener = this.props.firebase.auth.onAuthStateChanged(
             authUser => {
@@ -39,23 +67,29 @@ class App extends Component {
 
     render() {
         return (
-            <Router>
-                <Navigation authUser={this.state.authUser}/>
-                <hr />
-                <div style={{ padding: "60px 60px", textAlign: "center", color: "grey"}}> 
-                    <header>EDHEC FAIRTRADE PROJECT</header>
-                    <Route exact path={ROUTES.ABOUT_US} component={AboutUsPage} />
-                    <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-                    <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                    <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-                    <Route path={ROUTES.HOME} component={HomePage} />
-                    <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-                    <Route path={ROUTES.ADMIN} component={AdminPage} />
-                    <Route path={ROUTES.PEEPS} component={PeepsPage} />
-                </div>
-            </Router>
+            <AuthUserContext.Provider value={this.state.authUser}>
+                <Router>
+                    <Navigation />
+                    <hr />
+                    <div style={{ padding: "60px 60px", textAlign: "center", color: "grey"}}>
+                        <Route exact path={ROUTES.ABOUT_US} component={AboutUsPage} />
+                        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+                        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+                        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+                        <Route path={ROUTES.HOME} component={HomePage} />
+                        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+                        <Route path={ROUTES.ADMIN} component={AdminPage} />
+                        <Route path={ROUTES.PEEPS} component={PeepsPage} />
+                        <Route path={ROUTES.VOLUNTEER} component={VolunteerPage} />
+                        <Route path={ROUTES.SUPPORT} component={SupportPage} />
+                        <Route path={ROUTES.COMMENT_BOX} component={CommentBoxPage} />
+                    </div>
+                </Router>
+            </AuthUserContext.Provider>
         );
     }
 }
 
+
 export default withFirebase(App);
+*/
