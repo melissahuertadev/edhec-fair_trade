@@ -1,6 +1,6 @@
 import React from 'react';
 //import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, } from 'react-router-dom';
 
 import Navigation from '../Navigation';
 import AboutUsPage from '../AboutUs';
@@ -39,6 +39,7 @@ const App = () => (
 );
 
 export default withAuthentication(App);
+
 /*
 //change const App to class App
 class App extends Component {
