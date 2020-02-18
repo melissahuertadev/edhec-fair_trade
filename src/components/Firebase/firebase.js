@@ -39,6 +39,33 @@ class Firebase {
     doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password);
 
+    //merge auth and DB user API
+    onAuthUserListener = (next, fallback) => 
+        this.auth.onAuthStateChanged(authUser => {
+            if (authUser) {
+                this.user(authUser.uid)
+                    .once('value')
+                    .then(snapshot => {
+                        const dbUser = snapshot.val();
+
+                        //empty roles
+                        if (!dbUser.roles) {
+                            dbUser.roles = {};
+                        }
+
+                        authUser = {
+                            uid: authUser.uid,
+                            email: authUser.email,
+                            ...dbUser,
+                        };
+                        next(authUser);
+                    });
+            } else {
+                //If a failure occurs in the primary system, the fallback takes over.
+                fallback();
+            }
+        });
+
     // *** User API
     user = uid => this.db.ref(`users/${uid}`);
     users = () => this.db.ref('users');

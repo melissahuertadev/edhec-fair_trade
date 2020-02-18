@@ -56,16 +56,15 @@ class SignUpFormBase extends Component {
 
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
-            .then(authUser => {}
-                //creating the user in the firebase
-            )
             .then(authUser => {
-                //user in firebase db
+                //creating the user in the firebase
                 return this.props.firebase
-                 .user(authUser.user.uid)
+                 .user(authUser.uid)
                  .set({
-                    username, email,
-                  });
+                     username,
+                     email,
+                     roles,
+                    })
             })
             .then(() => {
                 this.setState({ ...INITIAL_STATE });
@@ -85,7 +84,7 @@ class SignUpFormBase extends Component {
     };
     
     onChangeCheckBox = event => {
-        this.setState({ [event.target.name]: event.target.checked});
+        this.setState({ [event.target.name]: event.target.checked });
     };
 
     //each input field gets a value from the local state and updates

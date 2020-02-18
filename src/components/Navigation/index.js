@@ -36,9 +36,6 @@ const NavigationAuth = () => (
                     <Link class = "nav-link" to={ROUTES.PEEPS}>Peeps</Link>
                 </li>
                 <li>
-<<<<<<< Updated upstream
-                    <Link class = "nav-link" to={ROUTES.PEEPS}>Peeps</Link>
-=======
                     <Link class = "nav-link" to={ROUTES.VOLUNTEER}>Volunteer</Link>
                 </li>
                 <li>
@@ -49,7 +46,6 @@ const NavigationAuth = () => (
                 </li>
                 <li>
                     <Link class = "nav-link" to={ROUTES.ADMIN}>Admin</Link>
->>>>>>> Stashed changes
                 </li>
                 <li>
                     <SignOutButton />
