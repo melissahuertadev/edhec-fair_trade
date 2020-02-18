@@ -49,11 +49,13 @@ class Firebase {
                         const dbUser = snapshot.val();
 
                         //empty roles
-                        /*
-                        if (!dbUser.roles) {
-                            dbUser.roles = {};
-                        }
-*/
+                        
+                       /* if (!dbUser.roles) {
+                            dbUser.roles = [];
+                        }*/
+                        
+                        
+
                         authUser = {
                             uid: authUser.uid,
                             email: authUser.email,
