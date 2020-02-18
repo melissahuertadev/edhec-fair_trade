@@ -9,3 +9,6 @@ export const PEEPS = '/peeps';
 export const VOLUNTEER = '/volunteer';
 export const SUPPORT = '/support';
 export const COMMENT_BOX = '/commentbox';
+export const COMMENTS = '/comments';
+export const POSTS = '/posts';
+export const ADDPOST = '/addpost';
