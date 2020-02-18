@@ -14,6 +14,9 @@ import PeepsPage from '../Peeps';
 import VolunteerPage from '../Volunteer';
 import SupportPage from '../Support';
 import CommentBoxPage from '../CommentBox';
+import CommentsPage from '../Comments';
+import PostsPage from '../Posts';
+import AddPostPage from '../AddPost';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
@@ -34,9 +37,13 @@ const App = () => (
             <Route path={ROUTES.VOLUNTEER} component={VolunteerPage} />
             <Route path={ROUTES.SUPPORT} component={SupportPage} />
             <Route path={ROUTES.COMMENT_BOX} component={CommentBoxPage} />
+            <Route path={ROUTES.COMMENTS} component={CommentsPage} />
+            <Route path={ROUTES.POSTS} component={PostsPage} />
+            <Route path={ROUTES.ADDPOST} component={AddPostPage} />
         </div>
     </Router>
 );
+
 
 export default withAuthentication(App);
 
