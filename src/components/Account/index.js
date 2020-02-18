@@ -25,16 +25,3 @@ const condition = authUser => !!authUser;
 //const condition = authUser => authUser != null;
 
 export default withAuthorization(condition)(AccountPage);
-/*
-const Account = () => (
-    <FirebaseContext.Consumer>
-        {firebase => {
-            return <div>
-                        <h1>Account</h1>
-                    </div>;
-        }}
-    </FirebaseContext.Consumer>
-);
-
-export default Account;
-*/
