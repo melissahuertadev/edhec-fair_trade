@@ -7,20 +7,22 @@ import { AuthUserContext } from '../Session';
 
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
-import './index.css'
+import * as ROLES from '../../constants/roles';
 
 //navigation costumize according to log status
 const Navigation = () => (
-    <div id="navigation">
         <AuthUserContext.Consumer>
             {authUser =>
-             authUser ? <NavigationAuth /> : <NavigationNonAuth />
+             authUser ? (
+                 <NavigationAuth authUser={authUser} /> 
+              ) : (
+                <NavigationNonAuth />
+             )
             }
         </AuthUserContext.Consumer>    
-    </div>
 );
 
-const NavigationAuth = () => (
+const NavigationAuth = ({ authUser }) => (
     <Navbar bg="dark" variant="dark">
         <div>
             <Nav className="nav-item">
@@ -54,7 +56,7 @@ const NavigationAuth = () => (
                 <li>
                     <SignOutButton />
                 </li>
-            </Nav>  
+            </Nav>
         </div>
     </Navbar>
 );
