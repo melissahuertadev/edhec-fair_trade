@@ -7,7 +7,6 @@ import { AuthUserContext } from '../Session';
 
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
-import './index.css'
 
 //navigation costumize according to log status
 const Navigation = () => (
